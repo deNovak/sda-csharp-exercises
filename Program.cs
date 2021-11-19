@@ -16,6 +16,7 @@ namespace sda_csharp_exercises
 
         static void Main(string[] args)
         {
+
             //Napisz funkcję tworzącą ciąg arytmetyczny o podanych: długości, pierwszym elemencie, różnicy ciągu.
             // 4 0 3
             // 0 3 6 9
