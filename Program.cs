@@ -1,50 +1,40 @@
 using System;
-using System.Linq;
 
 namespace sda_csharp_exercises
 {
     class Program
     {
+        //Dla numeru PESEL podanego jako tekst, sprawdź, czy ma on poprawną cyfrę kontrolną zgodnie z
+        //algorytmem podanym na stronie
+        //pl.wikipedia.org/wiki/PESEL#Cyfra_kontrolna_i_sprawdzanie_poprawności_numeru
+        //Liczby, przez które mnożymy poszczególne cyfry numeru PESEL nazywają się wagami.
+        //Utwórz tablicę, w której zapiszesz te wagi i wykorzystaj tę tablicę do sprawdzenia poprawności
+        //cyfry kontrolnej.
 
-
-        static string L33tCipher(string text)
-        {
-            char[] naturalLetters = { 'a', 'e', 'i', 'o', 's' };
-            char[] leetLetters = { '4', '3', '1', '0', '$' };
-            char[] txt = new char[text.Length];
-            for (int i = 0; i < text.Length; i++)
-            {
-                txt[i] = text[i];
-                for (int j = 0; j < 5; j++)
-                {
-                    if (txt[i] == naturalLetters[j])
-                        txt[i] = leetLetters[j];
-                }
-            }
-            return string.Join("", txt);
-        }
-        static string L33tDecipher(string text)
-        {
-            char[] naturalLetters = { 'a', 'e', 'i', 'o', 's' };
-            char[] leetLetters = { '4', '3', '1', '0', '$' };
-            char[] txt = new char[text.Length];
-            for (int i = 0; i < text.Length; i++)
-            {
-                txt[i] = text[i];
-                for (int j = 0; j < 5; j++)
-                {
-                    if (txt[i] == leetLetters[j])
-                        txt[i] = naturalLetters[j];
-                }
-            }
-            return string.Join("", txt);
-        }
         static void Main(string[] args)
         {
-            string text = "Stare dobre hakowanie";
-            Console.WriteLine(text);
-            Console.WriteLine($"Po zmianie: {L33tCipher(text)}");
-            Console.WriteLine($"Po zmianie: {L33tDecipher(text)}");
+            int[] wagi = { 2, 4, 6, 1, 1, 5, 8, 9, 0, 3 };
+            string pesel = "86029653761";
+            Console.WriteLine(pesel);
+            Console.WriteLine(ControlSum(pesel, wagi));
+
+        }
+
+        public static int ControlSum(string pesel, int[] wagi)
+        {
+            int[] id = new int[pesel.Length];
+            int sum = 0;
+            for (int i = 0; i < pesel.Length - 1; i++)
+            {
+                sum += wagi[i] * id[i];
+            }
+
+            int s = sum % 10;
+
+            if (s == 0)
+                return 0;
+            return 10 - s;
+
 
         }
     }
