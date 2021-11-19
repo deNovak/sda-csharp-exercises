@@ -4,37 +4,37 @@ namespace sda_csharp_exercises
 {
     class Program
     {
-        //Dla numeru PESEL podanego jako tekst, sprawdź, czy ma on poprawną cyfrę kontrolną zgodnie z
-        //algorytmem podanym na stronie
-        //pl.wikipedia.org/wiki/PESEL#Cyfra_kontrolna_i_sprawdzanie_poprawności_numeru
-        //Liczby, przez które mnożymy poszczególne cyfry numeru PESEL nazywają się wagami.
-        //Utwórz tablicę, w której zapiszesz te wagi i wykorzystaj tę tablicę do sprawdzenia poprawności
-        //cyfry kontrolnej.
+        //Napisz funkcję, która będzie sortowała podaną tablicę liczb wykorzystując algorytm sortowania
+        //bąbelkowego.
+
+        public static int[] BubbleSort(int[] numberArray)
+        {
+            for (int i = 0; i < numberArray.Length; i++)
+            {
+                for (int j = 0; j < numberArray.Length - 1; j++)
+                {
+                    if (numberArray[j] > numberArray[j + 1])
+                    {
+                        int deletedNumber = numberArray[j];
+                        numberArray[j] = numberArray[j + 1];
+                        numberArray[j + 1] = deletedNumber;
+                    }
+                }
+            }
+
+            return numberArray;
+        }
 
         static void Main(string[] args)
         {
-            int[] wagi = { 2, 4, 6, 1, 1, 5, 8, 9, 0, 3 };
-            string pesel = "86029653761";
-            Console.WriteLine(pesel);
-            Console.WriteLine(ControlSum(pesel, wagi));
+            int[] numberArray = { 6, 8, 52, 3, 15, 11, 28, 12, 32, 23, 20 };
 
-        }
+            int[] sortedNumberArray = BubbleSort(numberArray);
 
-        public static int ControlSum(string pesel, int[] wagi)
-        {
-            int[] id = new int[pesel.Length];
-            int sum = 0;
-            for (int i = 0; i < pesel.Length - 1; i++)
+            foreach (int number in sortedNumberArray)
             {
-                sum += wagi[i] * id[i];
+                Console.Write($"{number}, ");
             }
-
-            int s = sum % 10;
-
-            if (s == 0)
-                return 0;
-            return 10 - s;
-
 
         }
     }
