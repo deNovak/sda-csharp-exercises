@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace sda_csharp_exercises
 {
@@ -35,6 +35,7 @@ namespace sda_csharp_exercises
             {
                 Console.Write($"{number}, ");
             }
+
         }
     }
 }
