@@ -1,11 +1,11 @@
-﻿using System;
-using System.Text.RegularExpressions;
+using System;
+using System.Linq;
 
 namespace sda_csharp_exercises
 {
-    //Napisz funkcję, która będzie wyliczała wartość funkcji silnia dla argumentu podanego przez użytkownika.
     class Program
     {
+
 
         static string L33tCipher(string text)
         {
@@ -45,6 +45,7 @@ namespace sda_csharp_exercises
             Console.WriteLine(text);
             Console.WriteLine($"Po zmianie: {L33tCipher(text)}");
             Console.WriteLine($"Po zmianie: {L33tDecipher(text)}");
+
         }
     }
 }
