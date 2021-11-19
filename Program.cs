@@ -5,39 +5,47 @@ namespace sda_csharp_exercises
 {
     class Program
     {
-        /*
-	    * Dla podanej tablicy liczb naturalnych wypisz tylko niepowtarzające się liczby.
-	    Przykład:
-	    int[] numbers = {2,5,1,2,5};
-	    Wynik:
-	    2 5 1
-	    Podpowiedź:
-	    zauważ, że w tablicy będą tylko liczby naturalne, czyli >= 0. Duplikat możesz więc nadpisać
-	    dowolną liczbą ujemną.
-	    */
+
+
+        static string L33tCipher(string text)
+        {
+            char[] naturalLetters = { 'a', 'e', 'i', 'o', 's' };
+            char[] leetLetters = { '4', '3', '1', '0', '$' };
+            char[] txt = new char[text.Length];
+            for (int i = 0; i < text.Length; i++)
+            {
+                txt[i] = text[i];
+                for (int j = 0; j < 5; j++)
+                {
+                    if (txt[i] == naturalLetters[j])
+                        txt[i] = leetLetters[j];
+                }
+            }
+            return string.Join("", txt);
+        }
+        static string L33tDecipher(string text)
+        {
+            char[] naturalLetters = { 'a', 'e', 'i', 'o', 's' };
+            char[] leetLetters = { '4', '3', '1', '0', '$' };
+            char[] txt = new char[text.Length];
+            for (int i = 0; i < text.Length; i++)
+            {
+                txt[i] = text[i];
+                for (int j = 0; j < 5; j++)
+                {
+                    if (txt[i] == leetLetters[j])
+                        txt[i] = naturalLetters[j];
+                }
+            }
+            return string.Join("", txt);
+        }
         static void Main(string[] args)
         {
-            int[] numbers = { 2, 5, 1, 2, 5, 6, 8, 5, 5 };
-            WriteAllElementsOnce(numbers);
-        }
+            string text = "Stare dobre hakowanie";
+            Console.WriteLine(text);
+            Console.WriteLine($"Po zmianie: {L33tCipher(text)}");
+            Console.WriteLine($"Po zmianie: {L33tDecipher(text)}");
 
-        static void WriteAllElementsOnce(int[] numbers)
-        {
-            int[] temp = new int[numbers.Length];
-
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                if (!temp.Contains(numbers[i]))
-                    temp[i] = numbers[i];
-                else
-                    temp[i] = -1;
-            }
-
-            foreach (int item in temp)
-            {
-                if (item != -1)
-                    Console.WriteLine(item);
-            }
         }
     }
 }
