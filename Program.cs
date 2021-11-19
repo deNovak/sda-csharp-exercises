@@ -4,32 +4,30 @@ namespace sda_csharp_exercises
 {
     class Program
     {
-        static void Main(string[] args)
+        static public void ArithmeticSequence(int length, int firstNumber, int difference)
         {
-            //Napisz funkcję do obliczania potęgi o zadanych podstawie i wykładniku.
-            //*zabezpiecz swój program tak, aby dla ujemnego wykładnika wyświetlał odpowiedni komunikat.
-            Console.WriteLine("Wpisz postawę postęgowania");
-            int basenumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Wpisz wykładnik postęgowania");
-            int tonumber = Convert.ToInt32(Console.ReadLine());
-            if (tonumber < 0)
+            int sum = firstNumber;
+            for (int i = 0; i < length; i++)
             {
-                Console.WriteLine("Wykładnk <0");
+                Console.Write($"{sum} ");
+                sum += difference;
             }
-            else
-            {
-                Console.WriteLine($"Wynik = {Powertox(basenumber, tonumber)}");
-            }
-        }
-        static int Powertox(int Basenumber, int tonumber)
-        {
-            int value = Basenumber;
-            for (int i = 1; i < tonumber; i++)
-            {
-                value *= Basenumber;
-            }
-            return value;
         }
 
+        static void Main(string[] args)
+        {
+            // Napisz funkcję tworzącą ciąg arytmetyczny o podanych: długości, pierwszym elemencie, różnicy ciągu.
+            // 4 0 3
+            // 0 3 6 9
+
+            Console.Write("Podaj długość ciągu: ");
+            int length = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Podaj pierwszy element ciągu: ");
+            int firstNumber = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Podaj różnicę: ");
+            int difference = Convert.ToInt32(Console.ReadLine());
+
+            ArithmeticSequence(length, firstNumber, difference);
+        }
     }
 }
