@@ -1,10 +1,21 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace sda_csharp_exercises
 {
     class Program
     {
+        static void PrintHello(Person person)
+        {
+            if (person.IsAdult())
+            {
+                Console.WriteLine("Welcoe to liquor store");
+            }
+            else
+            {
+                Console.WriteLine("Welcome to toy store");
+            }
+        }
         static void Main(string[] args)
         {
             //Metoda 1//
@@ -44,6 +55,7 @@ namespace sda_csharp_exercises
             Person person = new Person("Jan", "Kowalski", 1981);
             Employee employee = new Employee("Adam", "Nowak", 2000, 5000);
             Person person2 = new Employee("Joanna", "Kowalska", 1982, 6000);
+            Person person3 = new Person("Joanna", "Nowak", 2015);
             //Employee employee2 = (Employee)person2;
             //Employee employee2 = person2 as Employee;
             
@@ -52,6 +64,7 @@ namespace sda_csharp_exercises
             people.Add(person);
             people.Add(employee);
             people.Add(person2);
+            people.Add(person3);
 
             foreach (Person p in people)
             {
@@ -70,6 +83,8 @@ namespace sda_csharp_exercises
                 {
                     Console.WriteLine("No idea !?");
                 }
+
+                PrintHello(p);
             }
 
         }
