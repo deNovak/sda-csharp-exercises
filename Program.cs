@@ -6,7 +6,11 @@ namespace sda_csharp_exercises
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Cat cat = new Cat("Mruczek");
+            cat.MakeSound();
+            Dog dog = new Dog("Burek");
+            dog.MakeSound();
+
         }
     }
 }
