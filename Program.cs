@@ -1,90 +1,90 @@
 using System;
+using System.Collections.Generic;
 
 namespace sda_csharp_exercises
 {
     class Program
     {
+        static void PrintHello(Person person)
+        {
+            if (person.IsAdult())
+            {
+                Console.WriteLine("Welcoe to liquor store");
+            }
+            else
+            {
+                Console.WriteLine("Welcome to toy store");
+            }
+        }
         static void Main(string[] args)
         {
-            PrintText("Adam", "Maurycy", "Jaworski", false, 35, "Radomska", 32, 7, "Warszawa");
-            Console.WriteLine();
-            PrintText("Jan", "Banach", false, 10, "Morska", 19, "Wrocław");
-            Console.WriteLine();
-            PrintText("Anna", "Stawska", true, 66, "Batorego", 434, 11, "Gdynia");
-            Console.WriteLine();
-            PrintText("Jolanta", "Leokadia", "Zagórska", true, 49, "Kokosowa", 17, "Siedlce");
-        }
+            //Metoda 1//
+            //Person person = new Person();
+            //person.WhoAmI();
+            //person.FirstName = "Jan";
+            //person.LastName = "Kowalski";
+            //person.YearOfBirth = 1981;
+            //Console.WriteLine(person.IsAdult());
 
-        static void PrintText(string firstName, string lastname, bool isFemale, int age, string streetName, int streetNumber, int apartmentNumber, string cityName)
-        {
-            PrintText(firstName, "", lastname, isFemale, age, streetName, streetNumber, apartmentNumber, cityName);
-        }
+            //Metoda 2//
+            //Person person = new Person()
+            //{
+            //    FirstName = "Jan",
+            //    LastName = "Kowalski",
+            //    YearOfBirth = 1981
+            //};
+            //person.WhoAmI();
+            //Console.WriteLine(person.IsAdult());
 
-        static void PrintText(string firstName, string secondName, string lastname, bool isFemale, int age, string streetName, int streetNumber, string cityName)
-        {
-            PrintText(firstName, secondName, lastname, isFemale, age, streetName, streetNumber, 0, cityName);
-        }
+            //Employee employee = new Employee();
+            //employee.FirstName = "Jan";
+            //employee.LastName = "Kowalski";
+            //employee.YearOfBirth = 1981;
+            //employee.Salary = 5000;
+            //employee.WhoAmI();
+            //Employee employee2 = new Employee("Adam", "Nowak", 2000, 5000);
+            //employee2.WhoAmI();
 
-        static void PrintText(string firstName, string lastname, bool isFemale, int age, string streetName, int streetNumber, string cityName)
-        {
-            PrintText(firstName, "", lastname, isFemale, age, streetName, streetNumber, 0, cityName);
-        }
+            //Employee employee = new Employee("Jan", "Kowalski", 1981, 5000);
+            //Console.WriteLine(employee.Salary);
+            //Person person = new Employee("Adam", "Nowak", 2000, 6000);
+            ////Console.WriteLine(person.Salary);
+            //Employee employee2 = (Employee)person;
+            //Console.WriteLine(employee2.Salary);
 
-        static void PrintText(string firstName, string secondName, string lastname, bool isFemale, int age, string streetName, int streetNumber, int apartmentNumber, string cityName)
-        {
-            Console.WriteLine($"{firstName} {secondName} {lastname}");
-            Console.WriteLine($"ul. {streetName} {streetNumber} / {(apartmentNumber == 0 ? "" : apartmentNumber)} {cityName}");
+            Person person = new Person("Jan", "Kowalski", 1981);
+            Employee employee = new Employee("Adam", "Nowak", 2000, 5000);
+            Person person2 = new Employee("Joanna", "Kowalska", 1982, 6000);
+            Person person3 = new Person("Joanna", "Nowak", 2015);
+            //Employee employee2 = (Employee)person2;
+            //Employee employee2 = person2 as Employee;
+            
 
-            if (age >= 18)
+            List<Person> people = new List<Person>();
+            people.Add(person);
+            people.Add(employee);
+            people.Add(person2);
+            people.Add(person3);
+
+            foreach (Person p in people)
             {
-                if (isFemale)
-                    Console.WriteLine("Szanowna Pani");
+                if (p is Employee e)
+                {
+                    p.WhoAmI();
+                    Console.WriteLine("Is Employee");
+                    Console.WriteLine($"Salary = {e.Salary}");
+                }
+                else if (p is Person)
+                {
+                    p.WhoAmI();
+                    Console.WriteLine("Is Person");
+                }
                 else
-                    Console.WriteLine("Szanowny Panie");
-            }
-            else
-            {
-                if (isFemale)
-                    Console.WriteLine("Droga Użytkowniczko");
-                else
-                    Console.WriteLine("Drogi Użytkowniku");
-            }
+                {
+                    Console.WriteLine("No idea !?");
+                }
 
-            if (age < 18)
-                Console.WriteLine($"Zapraszamy Cię serdecznie na otwarcie naszego sklepu!");
-            else
-            {
-                if (isFemale)
-                    Console.WriteLine($"Zapraszamy Panią serdecznie na otwarcie naszego sklepu!");
-                else
-                    Console.WriteLine($"Zapraszamy Pana serdecznie na otwarcie naszego sklepu!");
-            }
-
-            if (age < 18)
-                Console.WriteLine($"Powitamy Cię kubkiem gorącej czekolady.");
-            else
-            {
-                if (isFemale)
-                    Console.WriteLine($"Powitamy Panią kieliszkiem szampana.");
-                else
-                    Console.WriteLine($"Powitamy Pana kieliszkiem szampana.");
-            }
-
-            if (age > 60)
-                Console.WriteLine("I zapraszamy do gry w bingo");
-
-            if (age < 18)
-                Console.WriteLine("Do zobaczenia");
-            else if (age > 60)
-            {
-                Console.WriteLine("Z wyrazami szacunku");
-            }
-            else
-            {
-                if (isFemale)
-                    Console.WriteLine($"Czekamy na Panią.");
-                else
-                    Console.WriteLine($"Czekamy na Pana.");
+                PrintHello(p);
             }
 
         }
