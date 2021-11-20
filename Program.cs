@@ -52,41 +52,47 @@ namespace sda_csharp_exercises
             //Employee employee2 = (Employee)person;
             //Console.WriteLine(employee2.Salary);
 
-            Person person = new Person("Jan", "Kowalski", 1981);
-            Employee employee = new Employee("Adam", "Nowak", 2000, 5000);
-            Person person2 = new Employee("Joanna", "Kowalska", 1982, 6000);
-            Person person3 = new Person("Joanna", "Nowak", 2015);
-            //Employee employee2 = (Employee)person2;
-            //Employee employee2 = person2 as Employee;
-            
+            //Person person = new Person("Jan", "Kowalski", 1981);
+            //Employee employee = new Employee("Adam", "Nowak", 2000, 5000);
+            //Person person2 = new Employee("Joanna", "Kowalska", 1982, 6000);
+            //Person person3 = new Person("Joanna", "Nowak", 2015);
+            ////Employee employee2 = (Employee)person2;
+            ////Employee employee2 = person2 as Employee;
 
-            List<Person> people = new List<Person>();
-            people.Add(person);
-            people.Add(employee);
-            people.Add(person2);
-            people.Add(person3);
 
-            foreach (Person p in people)
+            //List<Person> people = new List<Person>();
+            //people.Add(person);
+            //people.Add(employee);
+            //people.Add(person2);
+            //people.Add(person3);
+
+            //foreach (Person p in people)
+            //{
+            //    if (p is Employee e)
+            //    {
+            //        p.WhoAmI();
+            //        Console.WriteLine("Is Employee");
+            //        Console.WriteLine($"Salary = {e.Salary}");
+            //    }
+            //    else if (p is Person)
+            //    {
+            //        p.WhoAmI();
+            //        Console.WriteLine("Is Person");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("No idea !?");
+            //    }
+
+            //    PrintHello(p);
+
+            List<Employee> employees = new List<Employee>();
+            employees.Add(new Employee("Jan", "Kowalski", 1981, 5000));
+            employees.Add(new Manager("Adam", "Nowak", 2000, 5000));
+            foreach (var e in employees)
             {
-                if (p is Employee e)
-                {
-                    p.WhoAmI();
-                    Console.WriteLine("Is Employee");
-                    Console.WriteLine($"Salary = {e.Salary}");
-                }
-                else if (p is Person)
-                {
-                    p.WhoAmI();
-                    Console.WriteLine("Is Person");
-                }
-                else
-                {
-                    Console.WriteLine("No idea !?");
-                }
-
-                PrintHello(p);
+                Console.WriteLine(e);
             }
-
         }
     }
 }
