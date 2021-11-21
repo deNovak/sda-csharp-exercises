@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace sda_csharp_exercises
 {
@@ -6,16 +7,20 @@ namespace sda_csharp_exercises
     {
         static void Main(string[] args)
         {
-            Bank bank = new Bank();
-            BasicAccount account = new BasicAccount(AccountType.Account);
-            account.IncreaseBalance(2000M);
-            //account.IncreaseInterest(11M);
-            BasicAccount savingAccount = new BasicAccount(AccountType.SavingAccount);
-            savingAccount.IncreaseBalance(1000M);
-            savingAccount.IncreaseInterest(200M);
-            bank.AddAccount(account);
-            bank.AddAccount(savingAccount);
-            Console.WriteLine(bank.GetValue());
+            List<Figure> figures = new List<Figure>();
+            Square square = new Square(4);
+            Circle circle = new Circle(3);
+
+            figures.Add(square);
+            figures.Add(circle);
+
+            double total = 0;
+            foreach (Figure f in figures)
+            {
+                total += f.GetArea();
+            }
+            Console.WriteLine(total);
+
 
         }
     }
