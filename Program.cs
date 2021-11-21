@@ -6,17 +6,17 @@ namespace sda_csharp_exercises
     {
         static void Main(string[] args)
         {
-            //Chleb, cena: 3.50 PLN, 5 szt, wartość: 17.50 PLN”
-            OrderItem item1 = new OrderItem("Bread", 5, 3.50M);
-            //Mleko, cena: 2.20 PLN, opakowanie: butelka,
-            //cena opakowania: 1 PLN, 5 szt, wartość: 16 PLN”
-            OrderItemWithPackage item2 = new OrderItemWithPackage("Milk", 5, 2.20M, "Bottle", 1M);
+            Bank bank = new Bank();
+            BasicAccount account = new BasicAccount(AccountType.Account);
+            account.IncreaseBalance(2000M);
+            //account.IncreaseInterest(11M);
+            BasicAccount savingAccount = new BasicAccount(AccountType.SavingAccount);
+            savingAccount.IncreaseBalance(1000M);
+            savingAccount.IncreaseInterest(200M);
+            bank.AddAccount(account);
+            bank.AddAccount(savingAccount);
+            Console.WriteLine(bank.GetValue());
 
-            Order order = new Order();
-            order.AddOrderItem(item1);
-            order.AddOrderItem(item2);
-
-            order.DisplayOrderItems();
         }
     }
 }
