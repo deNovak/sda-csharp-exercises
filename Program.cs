@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace sda_csharp_exercises
 {
