@@ -6,29 +6,26 @@ using System.Threading.Tasks;
 
 namespace sda_csharp_exercises
 {
-	class LineSegment
-	{
-		public MyPoint A { get; set; }
-		public MyPoint B { get; set; }
+    class LineSegment
+    {
+        public MyPoint Point1 { get; set; }
+        public MyPoint Point2 { get; set; }
 
+        public LineSegment(MyPoint point1, MyPoint point2)
+        {
+            Point1 = point1;
+            Point2 = point2;
+        }
 
+        public LineSegment(double xA, double xB, double yA, double yB)
+        {
+            Point1 = new MyPoint(xA, xB);
+            Point2 = new MyPoint(yA, yB);
+        }
 
-		public LineSegment(MyPoint a, MyPoint b)
-		{
-			A = a;
-			B = b;
-		}
-
-		public LineSegment(double ax, double ay, double bx, double by)
-		{
-			A = new MyPoint(ax, ay);
-			B = new MyPoint(bx, by);
-		}
-
-		public double Lenght()
-		{
-			return Math.Sqrt(Math.Pow(B.X - A.X, 2) + Math.Pow(B.Y - A.Y, 2));
-		}
-
-	}
+        public double Length()
+        {
+            return Point1.GetDistanceFromPoint(Point2);
+        }
+    }
 }

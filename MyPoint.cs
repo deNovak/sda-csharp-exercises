@@ -16,6 +16,10 @@ namespace sda_csharp_exercises
             X = x;
             Y = y;
         }
-    }
 
+        public virtual double GetDistanceFromPoint(MyPoint point)
+        {
+            return Math.Sqrt(Math.Pow(Y - X, 2) + Math.Pow(point.Y - point.X, 2));
+        }
+    }
 }
